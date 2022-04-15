@@ -20,7 +20,7 @@ public class MergeSortTests {
             sortedNums[i] = newInt;
         }
         Arrays.sort(sortedNums);
-        int[] result = MergeSort.sort(nums);
-        Assertions.assertArrayEquals(result, sortedNums);
+        MergeSort.sort(nums);
+        Assertions.assertArrayEquals(nums, sortedNums);
     }
 }

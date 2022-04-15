@@ -5,30 +5,39 @@ import java.util.List;
 
 public class MergeSort {
 
-    public static int[] sort(int[] nums) {
-        return sort(nums, 0, nums.length -1);
+    public static void sort(int[] nums) {
+        mergeSort(nums);
     }
 
-    private static int[] sort(int[] nums, int left, int right) {
-        if (left == right) return nums;
-        int middle = left + (right - left) / 2;
-        int[] leftArray = sort(nums, left, middle);
-        int[] rightArray = sort(nums, middle + 1, right);
+    private static void mergeSort(int[] nums) {
+        int n = nums.length;
+        if (n < 2) return;
 
+        int middle = n / 2;
+        int[] leftArray = new int[middle];
+        int[] rightArray = new int[n - middle];
 
-        int[] result = new int[nums.length];
+        for (int i = 0; i < middle; i++) {
+            leftArray[i] = nums[i];
+        }
 
-        int p = left;
-        int q = middle + 1;
+        for (int i = 0; i < n-middle; i++) {
+            rightArray[i] = nums[i+middle];
+        }
 
-        for (int i = left; i <= right; i++) {
-            if ((p <= middle) && (q > right || leftArray[p] <= rightArray[q])) {
-                result[i] = leftArray[p++];
+        mergeSort(leftArray);
+        mergeSort(rightArray);
+
+        int left = 0;
+        int right = 0;
+
+        for (int i = 0; i < n; i++) {
+            if ((left < middle) && (right >= n - middle || leftArray[left] <= rightArray[right])) {
+                nums[i] = leftArray[left++];
             } else {
-                result[i] = rightArray[q++];
+                nums[i] = rightArray[right++];
             }
         }
-        return result;
     }
 
 
