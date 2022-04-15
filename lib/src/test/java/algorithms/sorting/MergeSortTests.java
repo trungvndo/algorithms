@@ -23,4 +23,15 @@ public class MergeSortTests {
         MergeSort.sort(nums);
         Assertions.assertArrayEquals(nums, sortedNums);
     }
+    @Test
+    void countInversionTest() {
+        int[] nums = {2,3,8,6,1};
+        Assertions.assertEquals(5, MergeSort.sortAndCountInversion(nums));
+    }
+
+    @Test
+    void countInversionTest2() {
+        int[] nums = {2,3,8,9,4,6,1};
+        Assertions.assertEquals(10, MergeSort.sortAndCountInversion(nums));
+    }
 }
