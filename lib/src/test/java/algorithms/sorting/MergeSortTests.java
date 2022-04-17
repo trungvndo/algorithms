@@ -33,5 +33,8 @@ public class MergeSortTests {
     void countInversionTest2() {
         int[] nums = {2,3,8,9,4,6,1};
         Assertions.assertEquals(10, MergeSort.sortAndCountInversion(nums));
+        for (int i: nums) {
+            System.out.println(i);
+        }
     }
 }
