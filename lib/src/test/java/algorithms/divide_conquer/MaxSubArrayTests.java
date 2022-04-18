@@ -18,7 +18,9 @@ public class MaxSubArrayTests {
 
         int[] result1 = MaxSubArray.findMaxSubArrayBruteForce(nums);
         int[] result2 = MaxSubArray.findMaxSubArrayDivideConquer(nums);
+        int[] result3 = MaxSubArray.findMaxSubArrayLinearTime(nums);
 
         Assertions.assertEquals(result1[2], result2[2]);
+        Assertions.assertEquals(result1[2], result3[2]);
     }
 }

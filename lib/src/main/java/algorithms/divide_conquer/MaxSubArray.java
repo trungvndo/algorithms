@@ -78,4 +78,25 @@ public class MaxSubArray {
 
         return maxResult;
     }
+
+    public static int[] findMaxSubArrayLinearTime(int[] nums) {
+        if (nums.length == 0) return nums;
+
+        int[] currentMaxArray = new int[] {0, 0, nums[0]};
+        int[] maxArrayInclCurrentIndex = new int[] { 0, 0, nums[0]};
+
+        for (int i = 1; i < nums.length; i++) {
+            if (maxArrayInclCurrentIndex[2] >= 0) {
+                maxArrayInclCurrentIndex = new int[]  { maxArrayInclCurrentIndex[0], i, maxArrayInclCurrentIndex[2] + nums[i]};
+            } else {
+                maxArrayInclCurrentIndex = new int[] {i, i, nums[i]};
+            }
+
+            if (maxArrayInclCurrentIndex[2] > currentMaxArray[2]) {
+                currentMaxArray = maxArrayInclCurrentIndex;
+            }
+        }
+
+        return currentMaxArray;
+    }
 }
